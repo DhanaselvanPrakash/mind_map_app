@@ -35,13 +35,17 @@ class MindMapController < ApplicationController
   end
 
   def steps
+    @step_id = params[:id]
     @steps = Step.where(mind_map_id: params[:id])
     @edit = params[:edit]
+    puts "Edit -> #{@edit}"
   end
 
   def implementations
     @step_id = params[:id]
     @implementations = Implementation.where(step_id: @step_id)
+    @map_id = params[:map_id]
+    puts @map_id
     @edit = params[:edit]
   end
 
