@@ -1,0 +1,19 @@
+<section class="p-5">
+  <h2 class="text-center text-2xl font-semibold">Mind Map shared with you</h2>
+  <% if @shared_mind_map.length == 0 %>
+    <p class="my-2 text-gray-700">No Mind Map Shared With you...!</p>
+  <% end %>
+  <div class="flex justify-center items-center my-5 gap-5">
+    <% @shared_mind_map.each do |map| %>
+      <div class="p-5 rounded border boder-black">
+        <p class="text-xl text-center font-semibold my-2 text-purple-600"><%= map.title %></p>
+        <p class="text-center"><%= map.moto %></p>
+        <div class="btn-group mt-3 flex flex-col justify-center items-center gap-2 border border-t-1 border-b-0 border-r-0 border-l-0 pt-2">
+          <div class="flex gap-5 justify-between">
+            <%= link_to "Show", steps_path(map.id, edit: false), class: "text-blue-500 text-center" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

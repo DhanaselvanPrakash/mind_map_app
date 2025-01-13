@@ -1,0 +1,33 @@
+<section class="p-5">
+  <h2 class="text-center text-2xl font-semibold">All Implementations</h2>
+  <div class="implementation-wrapper my-5 flex justify-center">
+    <table class="border border-black">
+      <tr>
+        <th class="px-5 border border-black">Implementation</th>
+        <% if @edit==true %>
+          <th class="px-5 border border-black">Option</th>
+        <% end%>
+      </tr>
+      <% @implementations.each do |implementation| %>
+        <tr>
+          <td class="px-5 text-center"><%= implementation.details %></td>
+          <% if @edit==true %>
+            <td>
+              <button class="px-2 py-1 bg-red-500 text-white rounded my-2 mx-5">Delete</button>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <% if @edit==true %>
+    <div class="btn-group flex gap-5">
+      <%= link_to "Back to Steps", steps_path(@step_id), class: "px-2 py-1 border boder-black rounded border-black" %>
+      <%= link_to "Add Implementation", root_path, class: "px-2 py-1 rounded bg-purple-500 text-white" %>
+    </div>
+  <% else %>
+    <div>
+      <%= link_to "Back to Steps", steps_path(@step_id), class: "px-2 py-1 border boder-black rounded border-black" %>
+    </div>
+  <% end %>
+</section>

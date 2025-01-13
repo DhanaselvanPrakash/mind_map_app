@@ -1,0 +1,20 @@
+<section class="p-5">
+  <h2 class="text-center text-2xl font-semibold">All Steps</h2>
+  <div class="steps-wrapper flex flex-warp my-5 justify-center">
+    <% @steps.each do |step| %>
+      <div class="p-5 rounded border boder-black">
+        <p class="text-xl text-center font-semibold my-2 text-purple-600"><%= step.title %></p>
+        <div class="btn-group my-3 flex justify-center gap-5 justify-center items-center border border-t-1 border-b-0 border-r-0 border-l-0 pt-2">
+          <%= link_to "Show", implementations_path(step.id), class: "text-blue-500 text-center" %>
+          <%= link_to "Delete", root_path, class: "text-red-500 text-center" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% if @edit==true %>
+    <div class="btn-group flex gap-5">
+      <%= link_to "Back to Mind Map", root_path, class: "px-2 py-1 border boder-black rounded border-black" %>
+      <%= link_to "Add Step", root_path, class: "px-2 py-1 rounded bg-purple-500 text-white" %>
+    </div>
+  <% end %>
+</section>

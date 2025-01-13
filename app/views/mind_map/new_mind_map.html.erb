@@ -1,0 +1,26 @@
+<section class="p-5">
+  <h2 class="text-center text-2xl font-semibold">Add Mind Map Here</h2>
+  <div>
+    <% if @mind_map.errors.any? %>
+      <% @mind_map.errors.each do |error| %>
+        <p><%= error.full_message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mind-map-form-wrapper flex flex-col items-center justify-center my-3">
+    <%= form_with(modal: @mind_map, url: create_mind_map_path, remote: true) do |f| %>
+      <div>
+        <%= f.label :title, class: "block" %>
+        <%= f.text_field :title, id: 'map-title', class: "px-2 py-1 border border-black my-2 rounded" %>
+      </div>
+      <div>
+        <%= f.label :moto, class: "block" %>
+        <%= f.text_area :moto, id: "moto", class: "px-2 py-1 border border-black my-2 rounded" %>
+      </div>
+      <%= f.hidden_field :user_id, id: "user-id", value: @user_id %>
+      <div>
+        <%= f.submit "Add", id: "add-map-btn", class: "px-2 py-1 bg-purple-500 rounded text-white hover:bg-purple-700" %>
+      </div>
+    <% end %>
+  </div>
+</section>

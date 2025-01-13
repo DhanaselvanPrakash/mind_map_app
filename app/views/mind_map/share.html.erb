@@ -1,0 +1,15 @@
+<div id="share-modal" class="flex justify-center items-center my-5">
+  <div class="bg-white rounded border p-5">
+    <h2 class="text-center my-2 text-xl font-semibold">Share With</h2>
+    <%= form_with(modal: @mind_map, url: share_mind_map_path(id: @id), remote: true) do |f| %>
+      <div>
+        <%= f.label :user_email, class: "block" %>
+        <%= f.select :user_email, @users_email, {}, id: 'user-email', class: "px-2 py-1 rounded border border-black my-2" %>
+      </div>
+      <% f.hidden_field :map_id, id: "map-id", value: @id %>
+      <div>
+        <%= f.submit "Share", class: "px-2 py-1 text-white bg-purple-500 rounded mt-5" %>
+      </div>
+    <% end %>
+  </div>
+</div> 
