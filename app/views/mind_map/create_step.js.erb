@@ -1,0 +1,7 @@
+<% if @step.errors.any? %>
+  $("#error-msg").show()
+<% else %>
+  alert("Step Added Sucessfully")
+  $("#step-modal").removeClass('flex').addClass('hidden')
+  location.reload()
+<% end %>

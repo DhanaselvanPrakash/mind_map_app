@@ -1,0 +1,7 @@
+<% if @implementation.errors.any? %>
+  $("#error-msg").show()
+<% else %>
+  alert("Implementation added successfully")
+  $("#implementaion-modal").removeClass('flex').addClass('hidden')
+  location.reload()
+<% end %>

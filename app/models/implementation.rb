@@ -6,5 +6,5 @@ class Implementation
 
   belongs_to :step
 
-  validates :details, presence: true
+  validates :details, presence: true, uniqueness: true
 end
