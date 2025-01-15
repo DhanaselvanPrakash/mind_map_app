@@ -148,6 +148,12 @@ GEM
       activemodel (>= 5.1, < 8.1, != 7.0.0)
       concurrent-ruby (>= 1.0.5, < 2.0)
       mongo (>= 2.18.0, < 3.0.0)
+    mongoid-compatibility (1.0.0)
+      activesupport
+      mongoid (>= 2.0)
+    mongoid-rspec (4.2.0)
+      mongoid (>= 3.0, < 10.0)
+      mongoid-compatibility (>= 0.5.1)
     msgpack (1.7.5)
     mutex_m (0.3.0)
     net-imap (0.4.18)
@@ -290,6 +296,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mongoid (~> 9.0)
+  mongoid-rspec
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.1)
   rails-controller-testing

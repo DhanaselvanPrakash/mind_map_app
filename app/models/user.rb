@@ -35,5 +35,8 @@ class User
   # field :locked_at,       type: Time
   include Mongoid::Timestamps
 
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+
   has_many :mind_maps, dependent: :destroy
 end

@@ -7,12 +7,14 @@
   <% end %>
   <div class="steps-wrapper flex flex-warp my-5 justify-center gap-5">
     <% @steps.each do |step| %>
-      <div class="p-5 rounded border boder-black">
+      <div class="p-5 rounded border">
         <p class="text-xl text-center font-semibold my-2 text-purple-600"><%= step.title %></p>
         <div class="btn-group my-3 flex justify-center gap-5 justify-center items-center border border-t-1 border-b-0 border-r-0 border-l-0 pt-2">
           <%= link_to "Show", implementations_path(id:step.id, edit: @edit, map_id: @step_id), class: "text-blue-500 text-center" %>
-          <%= form_with(model: @step, url: destroy_step_path(step.id), method: 'delete', remote: true) do |f| %>
-            <%= f.submit "Delete", formaction: destroy_step_path(step.id, map_id: @step_id), class: "text-red-500" %>
+          <% if @edit=="true" %>
+            <%= form_with(model: @step, url: destroy_step_path(step.id), method: 'delete', remote: true) do |f| %>
+              <%= f.submit "Delete", formaction: destroy_step_path(step.id, map_id: @step_id), class: "text-red-500" %>
+            <% end %>
           <% end %>
         </div>
       </div>

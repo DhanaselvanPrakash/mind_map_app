@@ -40,14 +40,14 @@ class MindMapController < ApplicationController
 
   def steps
     @step_id = params[:id]
-    @steps = Step.where(mind_map_id: params[:id])
+    @steps = Step.where(mind_maps_id: params[:id])
     @edit = params[:edit]
     @step = Step.new
     @error = params[:error]
   end
 
   def create_step
-    @step = Step.new(title: params[:title], mind_map_id: params[:map_id])
+    @step = Step.new(title: params[:title], mind_maps_id: params[:map_id])
     respond_to do |format|
       if @step.save
         format.js
@@ -100,10 +100,10 @@ class MindMapController < ApplicationController
     begin
       @implementation = Implementation.find(params[:id])
       respond_to do |format|
-        if @implementation.destroy
+        # if @implementation.destroy
           format.js
           format.html { redirect_to implementations_path(id: params[:step_id], edit: true, map_id: params[:map_id]), notice: "Implementaion deleted successfully" }
-        end
+        # end
       end
     rescue => err
       err
@@ -117,7 +117,6 @@ class MindMapController < ApplicationController
     @shared_mind_map = Array.new
     @mind_maps.each do |map|
       if map.shared_with.include?(@user_email)
-        puts "Works"
         @shared_mind_map << map
       end
     end
@@ -132,7 +131,6 @@ class MindMapController < ApplicationController
   def share_mind_map
     @mind_map = MindMap.find(params[:id])
     if !@mind_map.shared_with.include?(params[:user_email])
-      puts "works"
       @mind_map.shared_with << params[:user_email]
       @mind_map.save
       redirect_to root_path
