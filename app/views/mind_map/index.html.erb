@@ -7,10 +7,11 @@
         <p class="text-center"><%= map.moto %></p>
         <div class="btn-group mt-3 flex flex-col justify-center items-center gap-2 border border-t-1 border-b-0 border-r-0 border-l-0 pt-2">
           <div class="flex gap-5 justify-between">
-            <%= link_to "Show", steps_path(map.id, edit: true), class: "text-blue-500 text-center" %>
+            <%= link_to "Show", steps_path(map.id), class: "text-blue-500 text-center" %>
             <%= form_with(model: @mind_map, url: destroy_mind_map_path(map.id), method: 'delete', remote: true) do |f| %>
               <%= f.submit "Delete", formaction: destroy_mind_map_path(map.id), class: "text-red-500" %>
             <% end %>
+            <%= link_to "Visualize", show_visualization_path(map.id), class: "text-green-500" %>
           </div>
           <%= link_to "Share", share_path(map.id), class: "text-center bg-blue-500 px-2 py-1 text-white rounded" %>
         </div>

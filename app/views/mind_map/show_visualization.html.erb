@@ -1,0 +1,10 @@
+<section class="p-5">
+  <div class="flex items-center justify-between"> 
+    <h2 class="text-2xl font-semibold text-center text-purple-950">Mind Map <%= "->" %> <%= @mind_map.title %></h2>
+    <%= link_to "Back to Home Page", root_path, class: "text-purple-950" %> 
+  </div>
+  <input type='hidden' value=<%= @mind_map.id %> id="mind-map-id">
+  <div id="mindmap">
+  </div>
+</section>
+

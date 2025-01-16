@@ -10,26 +10,19 @@
       <div class="p-5 rounded border">
         <p class="text-xl text-center font-semibold my-2 text-purple-600"><%= step.title %></p>
         <div class="btn-group my-3 flex justify-center gap-5 justify-center items-center border border-t-1 border-b-0 border-r-0 border-l-0 pt-2">
-          <%= link_to "Show", implementations_path(id:step.id, edit: @edit, map_id: @step_id), class: "text-blue-500 text-center" %>
-          <% if @edit=="true" %>
+          <%= link_to "Show", implementations_path(id:step.id, map_id: @step_id), class: "text-green-500 text-center" %>
+          <%= link_to "Edit", update_step_path(step.id, map_id: @step_id), class: "text-blue-500" %>
             <%= form_with(model: @step, url: destroy_step_path(step.id), method: 'delete', remote: true) do |f| %>
               <%= f.submit "Delete", formaction: destroy_step_path(step.id, map_id: @step_id), class: "text-red-500" %>
             <% end %>
-          <% end %>
         </div>
       </div>
     <% end %>
   </div>
-  <% if @edit=="true" %>
-    <div class="btn-group flex gap-5">
-      <%= link_to "Back to Mind Map", root_path, class: "px-2 py-1 border boder-black rounded border-black" %>
-      <button class="px-2 py-1 rounded bg-purple-500 text-white" id="step-model-btn">Add Step</button>
-    </div>
-  <% else %>
-    <div>
-      <%= link_to "Back to Share Page", shared_mind_map_path, class: "px-2 py-1 border boder-black rounded border-black" %>
-    </div>
-  <% end %>
+  <div class="btn-group flex gap-5">
+    <%= link_to "Back to Mind Map", root_path, class: "px-2 py-1 border boder-black rounded border-black" %>
+    <button class="px-2 py-1 rounded bg-purple-500 text-white" id="step-model-btn">Add Step</button>
+  </div>
   <div id="step-modal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
     <div class="step-form-wrapper p-5 bg-white rounded">
       <h2 class="text-center font-semibold text-xl">Add Step here</h2>

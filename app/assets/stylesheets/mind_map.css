@@ -1,0 +1,22 @@
+#mindmap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 20px auto; */
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.node circle {
+  fill: #69b3a2;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node text {
+  font: 14px sans-serif;
+}

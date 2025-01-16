@@ -62,16 +62,6 @@ RSpec.describe MindMapController, type: :controller do
     end
   end
 
-  describe "GET shared" do
-    let(:curr_user) { curr_user = User.create(email: "test@hat.com", password: "test@123") }
-    let(:share1) { share1 = MindMap.create(title: "mind Map", moto: "test moto fot MM", user_id: curr_user.id, shared_with: ["test@hat.com"] ) }
-    let(:share2) { share2 = MindMap.create(title: "test Mind Map", moto: "test moto", user_id: curr_user.id, shared_with: ["test@hat.com"]) }
-
-    # it "assign the shared mind map" do
-    #   expect(assigns(:shared_mind_map)).to include(share1, share2)
-    # end
-  end
-
   describe "GET share/:id" do
     it "assign the shared mind map" do
       map = MindMap.new

@@ -9,34 +9,25 @@
     <table class="border border-black">
       <tr>
         <th class="px-5 border border-black">Implementation</th>
-        <% if @edit=="true" %>
-          <th class="px-5 border border-black">Option</th>
-        <% end%>
+        <th class="px-5 border border-black">Option</th>
       </tr>
       <% @implementations.each do |implementation| %>
         <tr>
           <td class="px-5 text-center"><%= implementation.details %></td>
-          <% if @edit=="true" %>
-            <td>
+            <td class="flex gap-5 mx-3">
+              <%= link_to "Edit", update_implementation_path(id: implementation.id, step_id: @step_id, map_id: @map_id), class: "text-blue-500" %>
               <%= form_with(model: @implementaion, url: destroy_implementation_path(id: implementation.id, step_id: @step_id, map_id: @map_id), method: 'delete', remote: true) do |f| %>
                 <%= f.submit "Delete", formaction: destroy_implementation_path(id: implementation.id,step_id: @step_id, map_id: @map_id), class: "text-red-500" %>
               <% end %>
             </td>
-          <% end %>
         </tr>
       <% end %>
     </table>
   </div>
-  <% if @edit=="true" %>
-    <div class="btn-group flex gap-5">
-      <%= link_to "Back to Steps", steps_path(id: @map_id, edit: @edit), class: "px-2 py-1 border boder-black rounded border-black" %>
-      <button class="px-2 py-1 rounded bg-purple-500 text-white" id="implementaion-model-btn">Add Implementation</button>
-    </div>
-  <% else %>
-    <div>
-      <%= link_to "Back to Steps", steps_path(id: @map_id, edit: @edit), class: "px-2 py-1 border boder-black rounded border-black" %>
-    </div>
-  <% end %>
+  <div class="btn-group flex gap-5">
+    <%= link_to "Back to Steps", steps_path(id: @map_id, edit: @edit), class: "px-2 py-1 border boder-black rounded border-black" %>
+    <button class="px-2 py-1 rounded bg-purple-500 text-white" id="implementaion-model-btn">Add Implementation</button>
+  </div>
   <div id="implementaion-modal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
     <div class="implementation-form-wrapper p-5 bg-white rounded">
       <h2 class="text-center font-semibold text-xl">Add Implementation here</h2>
